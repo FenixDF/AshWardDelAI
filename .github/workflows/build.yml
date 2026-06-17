@@ -24,7 +24,7 @@ jobs:
     - name: Build Windows executable
       run: |
         pyinstaller --onefile --noconsole \
-          --name AshWardDelAI \
+          --name AshWardDelAI.exe \
           --add-data "src/AshWardDelAI.ps1:." \
           src/launcher.py
     
