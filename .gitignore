@@ -1,0 +1,12 @@
+# Archivos de construcción
+build/
+dist/
+*.spec
+
+# Archivos temporales
+*.pyc
+__pycache__/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,60 @@
+name: 🐦‍🔥 Build AshWardDelAI for Windows
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install PyInstaller
+      run: pip install pyinstaller
+    
+    - name: Build Windows executable
+      run: |
+        pyinstaller --onefile --noconsole \
+          --name AshWardDelAI \
+          --add-data "src/AshWardDelAI.ps1:." \
+          src/launcher.py
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: AshWardDelAI
+        path: dist/AshWardDelAI.exe
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: dist/AshWardDelAI.exe
+        body: |
+          🔥🛡️ AshWardDelAI v1.0 - El guardián que elimina la IA
+          
+          🟣 Purple Team CyberSecurity
+          
+          Características:
+          - 3 niveles de limpieza (Básico, Profundo, Extremo)
+          - Punto de restauración automático
+          - Bloqueo de telemetría en firewall
+          - Eliminación de TODOS los rastros de IA
+          - OneDrive y Edge configurados sin IA
+          - Windows Defender sin telemetría
+          
+          Niveles:
+          🟢 BÁSICO - IA visible y telemetría básica
+          🟡 PROFUNDO - Servicios, apps y firewall (RECOMENDADO)
+          🔴 EXTREMO - Elimina TODOS los rastros de IA
+          
+          Creado por 🐦‍🔥FenixDF™🛡️
