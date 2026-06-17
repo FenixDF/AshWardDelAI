@@ -24,9 +24,14 @@ jobs:
     - name: Build Windows executable
       run: |
         pyinstaller --onefile --noconsole \
-          --name AshWardDelAI.exe \
+          --name AshWardDelAI \
           --add-data "src/AshWardDelAI.ps1:." \
           src/launcher.py
+        # Renombrar el archivo generado a .exe
+        mv dist/AshWardDelAI dist/AshWardDelAI.exe || true
+    
+    - name: Debug - Verify file exists
+      run: ls -la dist/
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
