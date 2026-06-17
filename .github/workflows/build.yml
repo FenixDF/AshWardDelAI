@@ -6,6 +6,10 @@ on:
       - 'v*'
   workflow_dispatch:
 
+# ⚠️ AÑADIR PERMISOS EXPLÍCITOS
+permissions:
+  contents: write  # Necesario para crear releases y subir archivos
+
 jobs:
   build:
     runs-on: ubuntu-latest
