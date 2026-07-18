@@ -1,5 +1,7 @@
 # 🔥🛡️ AshWardDelAI
 
+**Programa en fase de testeo y optimizacion, disponible y funcional en futuras versiones..**
+
 **El guardián que elimina la IA**
 
 > *"Dejando tu sistema limpio y soberano"*
